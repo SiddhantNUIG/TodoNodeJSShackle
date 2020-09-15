@@ -12,5 +12,5 @@ Mongoose.connect("mongodb+srv://cluster0.vinxm.mongodb.net/<dbname>?retryWrites=
 App.use(bodyParser.json({ limit: "50mb", extended: true }));
 App.use("/", testRouter)
 
-
-//App.listen(18320, () => console.log("server listening on 5000"));
+const port = process.env.PORT || 18320;
+App.listen(port, () => console.log("server listening on" + port));
