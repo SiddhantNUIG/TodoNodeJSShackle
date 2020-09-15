@@ -10,5 +10,6 @@ export const createTodo = async (data) => {
 };
 
 export const updateTodo = async (id) => {
+    console.log(id);
     return await ToDos.findByIdAndUpdate(id, { $set: { done: true } }).exec();
 }
