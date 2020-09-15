@@ -1,6 +1,7 @@
 import ToDos from "./TodoModel"
 export const getTodo = async () => {
     const data = await ToDos.find({}).exec();
+    console.log(data);
     return data;
 };
 
