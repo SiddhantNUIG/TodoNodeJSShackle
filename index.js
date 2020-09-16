@@ -11,9 +11,11 @@ Mongoose.connect("mongodb+srv://cluster0.vinxm.mongodb.net/<dbname>?retryWrites=
         () => { console.log("Database connected") }
     )
 
+App.use(cors());
+App.options("*", cors());
 App.use(bodyParser.json({ limit: "50mb", extended: true }));
 App.use("/", testRouter)
-App.use(cors());
+
 
 const port = process.env.PORT || 18320;
 App.listen(port, () => console.log("server listening on" + port));
