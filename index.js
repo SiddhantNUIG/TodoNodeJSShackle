@@ -2,6 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import Mongoose from "mongoose";
 import testRouter from "./route";
+import cors from "cors"
+
 const App = express();
 
 Mongoose.connect("mongodb+srv://cluster0.vinxm.mongodb.net/<dbname>?retryWrites=true&w=majority",
@@ -11,6 +13,7 @@ Mongoose.connect("mongodb+srv://cluster0.vinxm.mongodb.net/<dbname>?retryWrites=
 
 App.use(bodyParser.json({ limit: "50mb", extended: true }));
 App.use("/", testRouter)
+App.use(cors());
 
 const port = process.env.PORT || 18320;
 App.listen(port, () => console.log("server listening on" + port));
