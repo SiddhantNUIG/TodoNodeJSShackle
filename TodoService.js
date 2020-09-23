@@ -1,16 +1,31 @@
 import ToDos from "./TodoModel"
+
 export const getTodo = async () => {
-    const data = await ToDos.find({}).exec();
-    console.log(data);
-    return data;
+    try {
+        const data = await ToDos.find({}).exec();
+        //console.log(data);
+        return data;
+    } catch (err) {
+        next(err);
+    }
+
 };
 
 export const createTodo = async (data) => {
-    console.log(data);
-    return await new ToDos(data).save();
+    try {
+        //console.log(data);
+        return await new ToDos(data).save();
+    } catch (err) {
+        next(err);
+    }
 };
 
 export const updateTodo = async (id) => {
-    console.log(id);
-    return await ToDos.findByIdAndUpdate(id, { $set: { done: true } }).exec();
-}
+    try {
+        //console.log(id);
+        return await ToDos.findByIdAndUpdate(id, { $set: { done: true } }).exec();
+
+    } catch (err) {
+        next(err);
+    }
+};
